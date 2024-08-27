@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Рекламации</title>
+</head>
+<body>
+<h1>Список рекламаций</h1>
+
+<form method="POST">
+    {{ form.hiddentag() }}
+    {{ form.failurenode.label }} {{ form.failurenode() }}<br>
+    {{ form.recoverymethod.label }} {{ form.recoverymethod() }}<br>
+    {{ form.servicecompany.label }} {{ form.servicecompany() }}<br>
+    {{ form.submit() }}
+</form>
+
+<table border="1">
+    <tr>
+        <th>Дата отказа</th>
+        <th>Узел отказа</th>
+        <th>Описание отказа</th>
+    </tr>
+    {% for claim in claims %}
+    <tr>
+        <td>{{ claim.refusal_date.strftime('%Y-%m-%d') }}</td>
+        <td>{{ claim.failure_node }}</td>
+        <td>{{ claim.failure_description }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

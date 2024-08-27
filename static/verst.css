@@ -1,0 +1,88 @@
+body {
+    font-family: 'PT Astra Sans', sans-serif;  /* Установите шрифт */
+    margin: 0;
+    padding: 0;
+    background-color: #EBE6D6;  /* Цвет фона */
+}
+
+.container {
+    max-width: 1200px;  /* Максимальная ширина контейнера */
+    margin: 0 auto;  /* Центрирование контейнера */
+    padding: 20px;  /* Отступы */
+}
+
+header {
+    text-align: center;
+    margin: 20px 0;
+}
+
+h1, h2 {
+    color: #163E6C;  /* Основной цвет заголовков */
+}
+
+.form-header, .search-form, .results, .footer {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"], input[type="file"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px;
+    background-color: #D20A11;  /* Цвет кнопок */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #A5090E;  /* Цвет кнопок при наведении */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Адаптивные стили */
+@media (max-width: 1920px) {
+    /* Стили для 1920x1080 */
+}
+
+@media (max-width: 1366px) {
+    /* Стили для 1366x768 */
+}
+
+@media (max-width: 1536px) {
+    /* Стили для 1536x864 */
+}
+
+@media (max-width: 1440px) {
+    /* Стили для 1440x900 */
+}
+
+@media (max-width: 360px) {
+    /* Стили для 360x640 */
+}

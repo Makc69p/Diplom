@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Поиск машины</title>
+</head>
+<body>
+<h1>Поиск машины по заводскому номеру</h1>
+<form method="POST">
+    {{ form.hidden_tag() }}
+    {{ form.serial_number.label }} {{ form.serial_number() }}<br>
+    {{ form.submit() }}
+</form>
+
+{% if machine %}
+<h2>Результаты поиска:</h2>
+<table border="1">
+    <tr>
+        <th>Серийный номер</th>
+        <th>Модель</th>
+        <th>Дата контракта</th>
+    </tr>
+    <tr>
+        <td>{{ machine.serial_number }}</td>
+        <td>{{ machine.model }}</td>
+        <td>{{ machine.supply_contract_date.strftime('%Y-%m-%d') }}</td>
+    </tr>
+</table>
+{% elif machine is not none %}
+<p>Данных о машине с таким заводским номером нет в системе.</p>
+{% endif %}
+</body>
+</html>

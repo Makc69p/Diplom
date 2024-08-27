@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Техническое обслуживание</title>
+</head>
+<body>
+<h1>Список технического обслуживания</h1>
+
+<form method="POST">
+    {{ form.hiddentag() }}
+    {{ form.maintenancetype.label }} {{ form.maintenancetype() }}<br>
+    {{ form.machineserialnumber.label }} {{ form.machineserialnumber() }}<br>
+    {{ form.servicecompany.label }} {{ form.servicecompany() }}<br>
+    {{ form.submit() }}
+</form>
+
+<table border="1">
+    <tr>
+        <th>Дата ТО</th>
+        <th>Тип ТО</th>
+        <th>Машина</th>
+    </tr>
+    {% for maintenance in maintenancerecords %}
+    <tr>
+        <td>{{ maintenance.maintenancedate.strftime('%Y-%m-%d') }}</td>
+        <td>{{ maintenance.maintenancetype }}</td>
+        <td>{{ maintenance.machineid }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

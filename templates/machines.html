@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Машины</title>
+</head>
+<body>
+<h1>Список машин</h1>
+
+<form method="POST">
+    {{ form.hiddentag() }}
+    {{ form.model.label }} {{ form.model() }}<br>
+    {{ form.enginemodel.label }} {{ form.enginemodel() }}<br>
+    {{ form.transmissionmodel.label }} {{ form.transmissionmodel() }}<br>
+    {{ form.controlledbridgemodel.label }} {{ form.controlledbridgemodel() }}<br>
+    {{ form.drivebridgemodel.label }} {{ form.drivebridgemodel() }}<br>
+    {{ form.submit() }}
+</form>
+
+<table border="1">
+    <tr>
+        <th>Серийный номер</th>
+        <th>Модель</th>
+        <th>Дата контракта</th>
+    </tr>
+    {% for machine in machines %}
+    <tr>
+        <td>{{ machine.serialnumber }}</td>
+        <td>{{ machine.model }}</td>
+        <td>{{ machine.supplycontractdate.strftime('%Y-%m-%d') }}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

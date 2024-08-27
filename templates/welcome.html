@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Первичный Экран для авторизации</title>
+    <link href="https://fonts.googleapis.com/css2?family=PT+Astra+Sans:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='verst.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Первичный Экран для авторизации</h1>
+    </header>
+
+    <div class="form-header">
+        <h2>Электронная сервисная книжка "Мой силант"</h2>
+        <div>
+            <label for="logo">Логотип:</label>
+            <input type="file" id="logo" name="logo"><br>
+            <label for="contact">Номер или Телеграм:</label>
+            <input type="text" id="contact" name="contact"><br>
+            <label for="username">Логин:</label>
+            <input type="text" id="username" name="username"><br>
+            <label for="password">Пароль:</label>
+            <input type="password" id="password" name="password"><br>
+            <button onclick="login()">Войти</button>
+        </div>
+    </div>
+
+    <div class="search-form">
+        <h2 style="text-align:center;">Проверте комплектацию и технические характеристики техники Силант</h2>
+        <input type="text" placeholder="Заводской номер" id="serial_number">
+        <button onclick="searchMachine()">Поиск</button>
+    </div>
+
+    <div class="results">
+        <h2>Результаты поиска:</h2>
+        <div id="machine-details">
+            <!-- Здесь будет информация о комплектации и технических характеристиках -->
+        </div>
+        <table id="results-table">
+            <thead>
+            <tr>
+                <th>Серийный номер</th>
+                <th>Модель</th>
+                <th>Дата контракта</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Здесь будут строки с данными о машинах -->
+            </tbody>
+        </table>
+    </div>
+
+    <div class="footer">
+        <h2>Футер</h2>
+        <input type="text" placeholder="Номер телефона или Телеграм" id="footer_contact">
+        <button onclick="submitContact()">Отправить</button>
+    </div>
+</div>
+
+<script>
+    function login() {
+        // Здесь реализуйте логику авторизации
+    }
+
+     function searchMachine() {
+        const serialNumber = document.getElementById('serial_number').value;
+        // Здесь реализуйте логику поиска машины по заводскому номеру
+        // Например, отправьте AJAX-запрос к вашему серверу
+    }
+
+    function submitContact() {
+        const contact = document.getElementById('footer_contact').value;
+        // Здесь реализуйте логику отправки контакта
+    }
+</script>
+
+</body>
+</html>

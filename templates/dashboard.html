@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Данные по машине</title>
+    <style>
+        /* Стили для вкладок */
+        .tab {
+            display: none; /* Скрываем вкладки по умолчанию */
+        }
+        .tab.active {
+            display: block; /* Показываем активную вкладку */
+        }
+        .tablinks {
+            cursor: pointer;
+            padding: 10px;
+            border: 1px solid #ccc;
+            display: inline-block;
+        }
+        .tablinks.active {
+            background-color: #ddd;
+        }
+    </style>
+    <script>
+        function openTab(evt, tabName) {
+            // Скрыть все вкладки
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            // Убрать активный класс у всех кнопок
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            // Показать выбранную вкладку и добавить класс "active" к кнопке
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+    </script>
+</head>
+<body>
+
+<h1>Данные по машине</h1>
+
+<div>
+    <button class="tablinks" onclick="openTab(event, 'techData')">Технические данные</button>
+    <button class="tablinks" onclick="openTab(event, 'maintenance')">ТО</button>
+    <button class="tablinks" onclick="openTab(event, 'claims')">Рекламации</button>
+</div>
+
+<div id="techData" class="tab active">
+    <h2>Технические данные</h2>
+    <table border="1">
+        <tr>
+            <th>Серийный номер</th>
+            <th>Модель</th>
+            <th>Дата контракта</th>
+        </tr>
+        {% for machine in machines %}
+        <tr>
+            <td>{{ machine.serial_number }}</td>
+            <td>{{ machine.model }}</td>
+            <td>{{ machine.supply_contract_date.strftime('%Y-%m-%d') }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div id="maintenance" class="tab">
+    <h2>Техническое обслуживание</h2>
+    <table border="1">
+        <tr>
+            <th>Дата ТО</th>
+            <th>Тип ТО</th>
+            <th>Машина</th>
+        </tr>
+        {% for maintenance in maintenance_records %}
+        <tr>
+            <td>{{ maintenance.maintenance_date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ maintenance.maintenance_type }}</td>
+            <td>{{ maintenance.machine_id }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+<div id="claims" class="tab">
+    <h2>Рекламации</h2>
+    <table border="1">
+        <tr>
+            <th>Дата отказа</th>
+            <th>Узел отказа</th>
+            <th>Описание отказа</th>
+        </tr>
+        {% for claim in claims %}
+        <tr>
+            <td>{{ claim.refusal_date.strftime('%Y-%m-%d') }}</td>
+            <td>{{ claim.failure_node }}</td>
+            <td>{{ claim.failure_description }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+
+</body>
+</html>
